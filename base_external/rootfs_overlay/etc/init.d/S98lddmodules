@@ -1,0 +1,24 @@
+
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "No arguments provided. Exiting."
+    exit 1
+fi
+
+case "$1" in
+    start)
+        ./etc/init.d/scull_load
+        ./etc/init.d/module_load faulty
+        modprobe hello
+        ;;
+    stop)
+        ./etc/init.d/scull_unload
+        ./etc/init.d/module_unload faulty
+        rmmod hello
+        ;;
+    *)
+        echo "Invalid argument. Use 'start' or 'stop'."
+        exit 1
+        ;;
+esac
