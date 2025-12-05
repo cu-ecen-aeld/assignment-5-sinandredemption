@@ -10,12 +10,12 @@ case "$1" in
     start)
         ./etc/init.d/scull_load
         ./etc/init.d/module_load faulty
-        modprobe hello
+        ./etc/init.d/module_load hello 
         ;;
     stop)
         ./etc/init.d/scull_unload
         ./etc/init.d/module_unload faulty
-        rmmod hello
+        ./etc/init.d/module_unload hello 
         ;;
     *)
         echo "Invalid argument. Use 'start' or 'stop'."
